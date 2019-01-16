@@ -1,8 +1,10 @@
-# meowber
+# Meowber
 
-> A Vue.js project
+![](/docs/demo.gif)
 
-## Build Setup
+A simple Vue.js based app to search gifs using GIPHY API
+
+## How to start
 
 ``` bash
 # install dependencies
@@ -10,7 +12,11 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
+```
 
+## How to build
+
+``` bash
 # build for production with minification
 npm run build
 
@@ -18,4 +24,4 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
