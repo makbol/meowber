@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Search @perform-search="onPerformSearch" />
+        <Search @keyword-change="onKeywordChange" />
         <div
             v-show="results.length"
             class="options">
@@ -17,38 +17,84 @@
             :results="results"
             :number-of-columns="numberOfColumns"
         />
+        <LoadingIndicator v-if="isLoading" />
+        <InfiniteScroll
+            v-if="results.length"
+            :offset="150"
+            :threshold="0.5"
+            @in-viewport="loadMoreResults"
+        />
     </div>
 </template>
 
 <script>
 import Search from './components/Search';
 import SearchResults from './components/SearchResults';
+import InfiniteScroll from './components/InfiniteScroll';
+import LoadingIndicator from './components/LoadingIndicator';
 
 import * as api from './common/api.service';
+
+const NUM_OF_MEDIA = 25;
 
 export default {
     name: 'Meowber',
     components: {
         Search,
-        SearchResults
+        SearchResults,
+        InfiniteScroll,
+        LoadingIndicator,
     },
     data() {
         return {
             results: [],
-            numberOfColumns: 3
+            numberOfColumns: 3,
+            currentKeyword: '',
+            isLoading: false,
+            hasRecords: true
         };
     },
     methods: {
-        onPerformSearch(keyword) {
+        onKeywordChange(keyword) {
             if(keyword) {
-                api.search(keyword)
+                this.currentKeyword = keyword;
+                this.performSearch(keyword)
                     .then(searchResults => {
                         this.results = searchResults;
                     });
             } else {
                 this.results = [];
+                this.hasRecords = true;
+            }
+        },
+        performSearch(keyword) {
+            this.isLoading = true;
+
+            return api.search(keyword, NUM_OF_MEDIA, this.results.length)
+                .then(searchResults => {
+                    this.isLoading = false;
+
+                    if(searchResults.length === 0) {
+                        this.hasRecords = false;
+                    }
+                    return searchResults;
+                })
+                .catch(err => {
+                    this.isLoading = false;
+                    console.error(err);
+                });
+        },
+        loadMoreResults() {
+            if(this.isLoading || !this.hasRecords) {
+                return;
             }
 
+            if(this.results.length) {
+                this.performSearch(this.currentKeyword)
+                    .then(searchResults => {
+                        this.results.push(...searchResults);
+                    });
+            }
         },
         useOneColumnLayout() {
             this.numberOfColumns = 1;

@@ -28,8 +28,8 @@ function get(path, params) {
     return request('GET', url, requestParams);
 }
 
-export function search(query) {
+export function search(query, limit, offset) {
     const endpoint = 'gifs/search';
-    return get(endpoint, { q: query })
+    return get(endpoint, { q: query, limit, offset })
         .then(mapSearchResponse);
 }

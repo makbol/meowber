@@ -39,7 +39,7 @@ export default {
     },
     watch: {
         keyword: debounce(function() {
-            this.$emit('perform-search', this.keyword);
+            this.$emit('keyword-change', this.keyword);
         }, 300)
     },
     methods: {
