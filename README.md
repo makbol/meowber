@@ -2,7 +2,9 @@
 
 ![](/docs/demo.gif)
 
-A simple Vue.js based app to search gifs using GIPHY API
+A simple [Vue.js](https://vuejs.org/) based app to search gifs using [GIPHY API](https://developers.giphy.com)
+
+Demo is availabe on [https://makbol.github.io/meowber/dist/](https://makbol.github.io/meowber/dist/)
 
 ## How to start
 
