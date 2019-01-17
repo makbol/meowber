@@ -7,17 +7,22 @@
             :style="{'background': backgroundColor, 'height': height}"
             class="search-result__gif-container">
             <span class="search-result__title">{{ result.title }}</span>
-            <img
-                v-show="isLoaded"
-                :src="result.images.fixed_width.url"
-                @load="onLoad">
+            <MediaElement
+                :media="result.images.fixed_width"
+                @loaded="onLoad"
+            />
         </div>
     </div>
 </template>
 
 <script>
+import MediaElement from './MediaElement';
+
 export default {
     name: 'SearchResult',
+    components: {
+        MediaElement
+    },
     props: {
         result: {
             type: Object,
@@ -66,9 +71,6 @@ export default {
     }
     .search-result__gif-container {
         position: relative;
-        img {
-            width: 100%;
-        }
     }
     .search-result__title {
         position: absolute;
