@@ -26,4 +26,8 @@ npm run build
 npm run build --report
 ```
 
+## Further ideas / improvments
+
+* Lazy load/show videos visible to user. Big number of loaded videos causes serious rendering slowdown
+
 
