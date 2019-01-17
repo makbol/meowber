@@ -10,7 +10,7 @@ function mapImage(image) {
 
 function mapImages(images) {
     return {
-        fixed_width: mapImage(images.fixed_width)
+        fixedWidth: mapImage(images.fixed_width)
     };
 }
 

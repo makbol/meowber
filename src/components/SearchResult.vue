@@ -8,7 +8,7 @@
             class="search-result__gif-container">
             <span class="search-result__title">{{ result.title }}</span>
             <MediaElement
-                :media="result.images.fixed_width"
+                :media="result.images.fixedWidth"
                 @loaded="onLoad"
             />
         </div>
@@ -43,10 +43,10 @@ export default {
         height() {
             const elementWidth = this.elementWidth
                 ? this.elementWidth
-                : this.result.images.fixed_width.height;
+                : this.result.images.fixedWidth.height;
 
-            const ratio = elementWidth / this.result.images.fixed_width.width;
-            const height = Math.floor(this.result.images.fixed_width.height * ratio) + 'px';
+            const ratio = elementWidth / this.result.images.fixedWidth.width;
+            const height = Math.floor(this.result.images.fixedWidth.height * ratio) + 'px';
             return this.isLoaded ? 'auto' : height;
         }
     },
