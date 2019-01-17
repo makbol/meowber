@@ -20,9 +20,7 @@ function request(method, url, params) {
 }
 
 function get(path, params) {
-    const endpoint = `/${API_VERSION}/${path}`;
-    const url = API_HOST + endpoint;
-
+    const url = `${API_HOST}/${API_VERSION}/${path}`;
     const requestParams = Object.assign({}, params, { api_key: API_KEY });
 
     return request('GET', url, requestParams);
