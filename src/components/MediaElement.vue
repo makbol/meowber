@@ -16,6 +16,13 @@
 
 <script>
 export default {
+    /*
+    TODO: Improve performance on low cost mobile devices
+          by serving correct media type (webp for Chrome), hiding
+          elements invisible in viewport, set height/width for
+          video
+     */
+
     name: 'MediaElement',
     props: {
         media: {
