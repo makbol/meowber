@@ -1,6 +1,6 @@
 <template>
     <div class="loading-indicator">
-        <img src="/static/spinner.svg">
+        <img src="static/spinner.svg">
     </div>
 </template>
 
