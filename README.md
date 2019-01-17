@@ -30,4 +30,8 @@ npm run build --report
 
 * Lazy load/show videos visible to user. Big number of loaded videos causes serious rendering slowdown
 
+### Credits
+
+* Icons https://www.flaticon.com/packs/layout-icons
+
 
